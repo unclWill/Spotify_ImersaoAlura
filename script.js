@@ -1,35 +1,29 @@
-const resultArtist = document.getElementById("result-artist");
-const playlistContainer = document.getElementById("result-playlists");
-const searchInput = document.getElementById("search-input");
+// Obtém a referência do elemento com o ID "greeting"
+const greetingElement = document.getElementById("greeting");
 
-function requestApi(searchTerm) {
-    fetch(`http://localhost:3000/artists?name_like=${searchTerm}`)
-        .then((response) => response.json())
-        .then((results) => displayResults(results));
-}
+// Obtém a hora atual do sistema
+const currentHour = new Date().getHours();
 
-function displayResults(results) {
-    hidePlaylists();
-    const artistImage = document.getElementById("artist-img");
-    const artistName = document.getElementById("artist-name");
+// Forma mais simples
+const greetingMessage =
+    currentHour >= 5 && currentHour < 12
+        ? "Bom dia"
+        : currentHour >= 12 && currentHour < 18
+            ? "Boa tarde"
+            : "Boa noite";
 
-    results.forEach((element) => {
-        artistImage.src = element.urlImg;
-        artistName.innerText = element.name;
-    });
-    resultArtist.classList.remove("hidden");
-}
+greetingElement.textContent = greetingMessage;
 
-function hidePlaylists() {
-    playlistContainer.classList.add("hidden");
-}
+const container = document.querySelector(".offer__list-item");
 
-searchInput.addEventListener("input", function () {
-    const searchTerm = searchInput.value.toLowerCase();
-    if (searchTerm === "") {
-        resultArtist.classList.add("hidden");
-        playlistContainer.classList.remove("hidden");
-        return;
-    }
-    requestApi(searchTerm);
+const observer = new ResizeObserver(() => {
+    const containerWidth = container.offsetWidth;
+    const numColumns = Math.floor(containerWidth / 200);
+
+    container.style.gridTemplateColumns = `repeat(${numColumns}, minmax(200px, 1fr))`;
+
+    console.log({ container });
+    console.log({ numColumns });
 });
+
+observer.observe(container);
