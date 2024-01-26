@@ -1,4 +1,4 @@
-/* Header */
+/* HEADER */
 .main-container {
   max-width: 80vw;
   height: 100vh;
@@ -34,7 +34,7 @@
   width: 32px;
   height: 32px;
   background: var(--bg-icon);
-  background-color: var(--bg-arrow-color);
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -50,7 +50,8 @@
   align-items: center;
   width: 364px;
   height: 48px;
-  margin-left: #242424;
+  margin-left: 8px;
+  background-color: #242424;
   border-radius: 500px;
   border: 1px solid transparent;
 }
@@ -64,16 +65,17 @@
 .header__search input {
   background: transparent;
   border: none;
-  padding: 0px 100px 0px 12px;
+  padding: 0px 100px 0 12px;
   color: #fff;
+  text-overflow: ellipsis;
+  outline: none;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  outline: none;
 }
 
 .header__login .subscribe {
-  color: #a7a7a7;
+  color: var(--text-sub);
   font-size: 16px;
   font-weight: 700;
   background-color: transparent;
@@ -84,13 +86,31 @@
 .header__login .login {
   width: 100px;
   height: 48px;
-  color: #000;
+  color: var(--text-base-dark);
   font-size: 16px;
   font-weight: 700;
   border-radius: 40px;
 }
 
-/* Playlist */
+/* HOVER */
+
+.header__search:hover {
+  border: 1px solid #fff;
+}
+
+.header__login .subscribe:hover {
+  transform: scale(1.04);
+  color: var(--text-base-light);
+}
+
+.header__login .login:hover {
+  transform: scale(1.04);
+}
+/* FIM HOVER */
+
+/*FIM HEADER */
+
+/* PLAYLIST */
 .playlist-container {
   height: 68vh;
   padding-top: 16px;
@@ -141,9 +161,9 @@
   margin-bottom: 16px;
 
   /* CODIGO COM JS CALCULANDO OS CARDS POR COLUNA */
-  display: grid;  
+  display: grid;
   gap: 16px;
-  grid-gap: 32px;  
+  grid-gap: 32px;
   margin: 0 auto;
 }
 
@@ -331,4 +351,4 @@
 #result-artist {
   padding: 20px 40px;
 }
-/* FIM CARD ARTISTA *
+/* FIM CARD ARTISTA */
